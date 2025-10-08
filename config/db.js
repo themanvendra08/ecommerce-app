@@ -20,13 +20,12 @@ async function connectDB() {
     };
 
     cached.promise = mongoose
-      .connect(`${process.env.MONGODB_URI}`, options)
-      .then(
-        (mongo = () => {
-          return mongo;
-        })
-      );
+      .connect(process.env.MONGODB_URI, options)
+      .then((mongooseInstance) => {
+        return mongooseInstance;
+      });
   }
+
   cached.conn = await cached.promise;
   return cached.conn;
 }
