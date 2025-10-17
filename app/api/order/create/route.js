@@ -14,10 +14,7 @@ export async function POST(request) {
         // Calculate the total amount
         const amount = await items.reduce(async (acc, item) => {
             const product = await Product.findById(item.product)
-            if (!product) {
-                throw new Error('Product not found')
-            }
-            return acc + product.offerPrice * item.quantity
+            return await acc + product.offerPrice * item.quantity
         }, 0)
         await inngest.send({
             name: 'order/created',
