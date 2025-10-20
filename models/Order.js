@@ -4,10 +4,10 @@ const orderSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true,
-        ref: 'User',
+        ref: 'user',
     },
     items: [{
-        product: { type: String, required: true, ref: 'Product' },
+        product: { type: String, required: true, ref: 'product' },
         quantity: { type: Number, required: true },
     }],
     amount: {
@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true,
-        ref: 'Address',
+        ref: 'address',
     },
     status: {
         type: String,

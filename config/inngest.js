@@ -62,7 +62,6 @@ export const syncUserDeletion = inngest.createFunction(
   },
   async ({ event }) => {
     const { id } = event.data;
-
     await connectDB();
     await User.findByIdAndDelete(id);
   }
@@ -87,7 +86,6 @@ export const createUserOrder = inngest.createFunction(
         items: event.data.items,
         amount: event.data.amount,
         address: event.data.address,
-        status: event.data.status,
         date: event.data.date,
       }
     })

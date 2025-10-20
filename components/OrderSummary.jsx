@@ -49,12 +49,7 @@ const OrderSummary = () => {
       if (!selectedAddress) {
         return toast.error("Please select an address");
       }
-      let cartItemsArray = Object.keys(cartItems).map((item) => {
-        return {
-          product: item,
-          quantity: cartItems[item],
-        };
-      });
+      let cartItemsArray = Object.keys(cartItems).map((key) => ({product: key,quantity: cartItems[key]}));
       cartItemsArray = cartItemsArray.filter((item) => item.quantity > 0);
       if (cartItemsArray.length === 0) {
         return toast.error("Please add items to the cart");
@@ -78,7 +73,6 @@ const OrderSummary = () => {
         return toast.error(data.message);
       }
     } catch (error) {
-      console.log("Error in creating order", error);
       return toast.error(error.message);
     }
   };
